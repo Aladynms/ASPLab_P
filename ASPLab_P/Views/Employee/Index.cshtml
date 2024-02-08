@@ -1,0 +1,62 @@
+﻿@model List<Employee>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string status;
+}
+<h1>Pracownicy</h1>
+<a class="btn btn-primary" asp-controller="Employee" asp-action="Create">Dodaj kontakt</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Branch)
+            </th>
+            <th>
+                Stan
+            </th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+                <td>
+                    @item.Position.GetDisplayName()
+                </td>
+                <td>
+                    @item.Branch
+                </td>
+                <td>
+                    @{
+                        status = item.DateOfDismissal == null ? "Aktywny" : "Zwolniony";
+                    }
+                    @status
+                </td>
+                <td>
+                    <a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                    <a asp-controller="Employee" asp-action="Detalis" asp-route-id="@item.Id">Szczegóły</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
