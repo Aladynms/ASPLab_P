@@ -567,6 +567,73 @@ namespace Data
                     Position = 5,
                     BranchId = 5,
                     DateOfEmployment = new DateTime(2022, 9, 14)
+                },
+                // Firma XYZ (kontynuacja)
+                new EmployeeEntity()
+                {
+                    EmployeeId = 31,
+                    Name = "Karol",
+                    LastName = "Nowak",
+                    PESEL = "08010112345",
+                    Email = "karol.nowak@firmaxyz.com",
+                    Phone = "567891234",
+                    Position = 3,
+                    BranchId = 1,
+                    DateOfEmployment = new DateTime(2018, 2, 15),
+                    DateOfDismissal = new DateTime(2024, 1, 31)
+                },
+                // ABC Sp. z o.o. (kontynuacja)
+                new EmployeeEntity()
+                {
+                    EmployeeId = 32,
+                    Name = "Zofia",
+                    LastName = "Kowalczyk",
+                    PESEL = "08121223456",
+                    Email = "zofia.kowalczyk@abc.com",
+                    Phone = "678912345",
+                    Position = 2,
+                    BranchId = 2,
+                    DateOfEmployment = new DateTime(2019, 10, 10)
+                },
+                new EmployeeEntity()
+                {
+                    EmployeeId = 33,
+                    Name = "Marek",
+                    LastName = "Lisowski",
+                    PESEL = "09030334567",
+                    Email = "marek.lisowski@abc.com",
+                    Phone = "789123456",
+                    Position = 5,
+                    BranchId = 2,
+                    DateOfEmployment = new DateTime(2021, 5, 20),
+                    DateOfDismissal = new DateTime(2024, 3, 15)
+                },
+                // Inicjatywa Polska (kontynuacja)
+                new EmployeeEntity()
+                {
+                    EmployeeId = 34,
+                    Name = "Julia",
+                    LastName = "Krawiec",
+                    PESEL = "10040445678",
+                    Email = "julia.krawiec@inicjatywa.pl",
+                    Phone = "891234567",
+                    Position = 1,
+                    BranchId = 3,
+                    DateOfEmployment = new DateTime(2020, 7, 8),
+                    DateOfDismissal = new DateTime(2023, 6, 30)
+                },
+                // Tech Innovators (kontynuacja)
+                new EmployeeEntity()
+                {
+                    EmployeeId = 35,
+                    Name = "Krzysztof",
+                    LastName = "Zając",
+                    PESEL = "10150556789",
+                    Email = "krzysztof.zajac@techinnovators.com",
+                    Phone = "912345678",
+                    Position = 3,
+                    BranchId = 4,
+                    DateOfEmployment = new DateTime(2021, 2, 5)
                 }
             );
         }

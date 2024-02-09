@@ -202,22 +202,22 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "495544e7-7caa-469a-ab35-cfd14a35c146", "495544e7-7caa-469a-ab35-cfd14a35c146", "admin", "ADMIN" });
+                values: new object[] { "79d3a76e-ad82-46b5-897c-19e39d79585e", "79d3a76e-ad82-46b5-897c-19e39d79585e", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "d9b0335e-7381-43ca-bcca-f86fd5c45bf2", "d9b0335e-7381-43ca-bcca-f86fd5c45bf2", "user", "USER" });
+                values: new object[] { "f2a93b8a-9ba4-42ba-99c5-c8b38a824544", "f2a93b8a-9ba4-42ba-99c5-c8b38a824544", "user", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a25325e2-29bf-400d-86df-cf8e00c37ab0", 0, "cf61ecf5-d63f-4f2e-b1cf-253c0c9b2a6a", "admin@wsei.edu.pl", true, false, null, "ADMIN@WSEI.EDU.PL", "ADMIN", "AQAAAAEAACcQAAAAEKf83Uz7HZB2qr/JSnmiqxKYRZLsfb8EoOSB8ToqUf4T7ZuQKdB+cz8110w7MEIH0g==", null, false, "62811a37-4765-4036-aa23-5428d919d5b2", false, "admin" });
+                values: new object[] { "2d1a4848-f712-494c-88b2-59cd6199884d", 0, "15c2e142-1536-4332-a7d7-0d4d1f044970", "user@wsei.edu.pl", true, false, null, "USER@WSEI.EDU.PL", "USER", "AQAAAAEAACcQAAAAEJl/bFIU7G05HOx/ypB6fRPqpsR8E5gxbZuL6KR4ok2guMYvPHZUSc2vzztQgmfDIg==", null, false, "65c7ec1f-e6e5-4da7-8144-6e0520304a0f", false, "user" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "ad613de7-3b6c-439a-b023-5c1e4f777d34", 0, "5f3ffa00-6947-4d9e-a311-5775191f6bc2", "user@wsei.edu.pl", true, false, null, "USER@WSEI.EDU.PL", "USER", "AQAAAAEAACcQAAAAEB7k2Zz3CXOOVaa2zZu2EbLq06ylC55iOHXMbUj1itWQ6v/6prvEGsUyjs1ycYIpFg==", null, false, "c53ca4a4-b744-4133-9945-ecf831d7aa5c", false, "user" });
+                values: new object[] { "4d68445a-bad0-490d-a495-3e52f65f2543", 0, "451bc68c-eaeb-4c89-9f49-1d867550a302", "admin@wsei.edu.pl", true, false, null, "ADMIN@WSEI.EDU.PL", "ADMIN", "AQAAAAEAACcQAAAAECf8593yn0GtxqDbsArdt28trgBaFBqazq0q9oi8hft9BKWAdq6tAt0bJ/J0kO8vjA==", null, false, "d3b94f48-fa2f-4eb2-bf65-ffb3bdb4073d", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "branches",
@@ -247,12 +247,12 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "495544e7-7caa-469a-ab35-cfd14a35c146", "a25325e2-29bf-400d-86df-cf8e00c37ab0" });
+                values: new object[] { "f2a93b8a-9ba4-42ba-99c5-c8b38a824544", "2d1a4848-f712-494c-88b2-59cd6199884d" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "d9b0335e-7381-43ca-bcca-f86fd5c45bf2", "ad613de7-3b6c-439a-b023-5c1e4f777d34" });
+                values: new object[] { "79d3a76e-ad82-46b5-897c-19e39d79585e", "4d68445a-bad0-490d-a495-3e52f65f2543" });
 
             migrationBuilder.InsertData(
                 table: "employees",
@@ -403,6 +403,31 @@ namespace Data.Migrations
                 table: "employees",
                 columns: new[] { "EmployeeId", "BranchId", "DateOfDismissal", "DateOfEmployment", "Email", "LastName", "Name", "PESEL", "Phone", "Position" },
                 values: new object[] { 30, 5, null, new DateTime(2022, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "kinga.grabowska@nowoczesne.pl", "Grabowska", "Kinga", "07090901234", "456789123", 5 });
+
+            migrationBuilder.InsertData(
+                table: "employees",
+                columns: new[] { "EmployeeId", "BranchId", "DateOfDismissal", "DateOfEmployment", "Email", "LastName", "Name", "PESEL", "Phone", "Position" },
+                values: new object[] { 31, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2018, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "karol.nowak@firmaxyz.com", "Nowak", "Karol", "08010112345", "567891234", 3 });
+
+            migrationBuilder.InsertData(
+                table: "employees",
+                columns: new[] { "EmployeeId", "BranchId", "DateOfDismissal", "DateOfEmployment", "Email", "LastName", "Name", "PESEL", "Phone", "Position" },
+                values: new object[] { 32, 2, null, new DateTime(2019, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "zofia.kowalczyk@abc.com", "Kowalczyk", "Zofia", "08121223456", "678912345", 2 });
+
+            migrationBuilder.InsertData(
+                table: "employees",
+                columns: new[] { "EmployeeId", "BranchId", "DateOfDismissal", "DateOfEmployment", "Email", "LastName", "Name", "PESEL", "Phone", "Position" },
+                values: new object[] { 33, 2, new DateTime(2024, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "marek.lisowski@abc.com", "Lisowski", "Marek", "09030334567", "789123456", 5 });
+
+            migrationBuilder.InsertData(
+                table: "employees",
+                columns: new[] { "EmployeeId", "BranchId", "DateOfDismissal", "DateOfEmployment", "Email", "LastName", "Name", "PESEL", "Phone", "Position" },
+                values: new object[] { 34, 3, new DateTime(2023, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "julia.krawiec@inicjatywa.pl", "Krawiec", "Julia", "10040445678", "891234567", 1 });
+
+            migrationBuilder.InsertData(
+                table: "employees",
+                columns: new[] { "EmployeeId", "BranchId", "DateOfDismissal", "DateOfEmployment", "Email", "LastName", "Name", "PESEL", "Phone", "Position" },
+                values: new object[] { 35, 4, null, new DateTime(2021, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "krzysztof.zajac@techinnovators.com", "Zając", "Krzysztof", "10150556789", "912345678", 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
