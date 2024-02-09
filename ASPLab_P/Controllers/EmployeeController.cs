@@ -1,9 +1,11 @@
 ﻿using ASPLab_P.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ASPLab_P.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
@@ -23,6 +25,7 @@ namespace ASPLab_P.Controllers
         }
 
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var employees = _employeeService.FindAll();

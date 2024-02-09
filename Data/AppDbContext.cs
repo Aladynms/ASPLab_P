@@ -1,10 +1,12 @@
 ﻿using Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<EmployeeEntity> Employees { get; set; }
         public DbSet<BranchEntity> Branches { get; set; }
@@ -20,6 +22,81 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            // utworzenie id
+            string ADMIN_ID = Guid.NewGuid().ToString();
+            string ADMIN_ROLE_ID = Guid.NewGuid().ToString();
+
+            string USER_ID = Guid.NewGuid().ToString();
+            string USER_ROLE_ID = Guid.NewGuid().ToString();
+
+            // utworzenie ról
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole()
+                {
+                    Name = "admin",
+                    NormalizedName = "ADMIN",
+                    Id = ADMIN_ROLE_ID,
+                    ConcurrencyStamp = ADMIN_ROLE_ID
+                });
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole()
+                {
+                    Name = "user",
+                    NormalizedName = "USER",
+                    Id = USER_ROLE_ID,
+                    ConcurrencyStamp = USER_ROLE_ID
+                });
+
+            // utworzenie użytkowników
+            var admin = new IdentityUser()
+            {
+                Id = ADMIN_ID,
+                Email = "admin@wsei.edu.pl",
+                NormalizedEmail = "ADMIN@WSEI.EDU.PL",
+                EmailConfirmed = true,
+                UserName = "admin",
+                NormalizedUserName = "ADMIN"
+            };
+
+            var user = new IdentityUser()
+            {
+                Id = USER_ID,
+                Email = "user@wsei.edu.pl",
+                NormalizedEmail = "USER@WSEI.EDU.PL",
+                EmailConfirmed = true,
+                UserName = "user",
+                NormalizedUserName = "USER"
+            };
+
+            // haszowanie haseł
+            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
+
+            admin.PasswordHash = ph.HashPassword(admin, "admin");
+            user.PasswordHash = ph.HashPassword(user, "user");
+
+            // dodanie użytkowników
+            modelBuilder.Entity<IdentityUser>().HasData(admin);
+            modelBuilder.Entity<IdentityUser>().HasData(user);
+
+            //przypisanie administratorowi roli admin
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = ADMIN_ROLE_ID,
+                    UserId = ADMIN_ID,
+                });
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = USER_ID,
+                });
+
+            // Entity
             modelBuilder.Entity<BranchEntity>()
             .OwnsOne(e => e.Address);
 
@@ -82,7 +159,7 @@ namespace Data
                 { 
                     EmployeeId = 2,
                     Name = "Ewa",
-                    LastName = "Nowak",
+                    LastName = "Kocioł",
                     PESEL = "10987654321",
                     Email = "ewa@wsei.edu.pl",
                     Phone = "987654321",
@@ -106,8 +183,8 @@ namespace Data
                 new EmployeeEntity()
                 {
                     EmployeeId = 4,
-                    Name = "Ewa",
-                    LastName = "Nowak",
+                    Name = "Iwo",
+                    LastName = "Dran",
                     PESEL = "210987654321",
                     Email = "ewa@wsei.edu.pl",
                     Phone = "198765432",
