@@ -41,9 +41,9 @@
         <span class="text-danger" asp-validation-for="Position"></span>
     </div>
     <div>
-        <label asp-for="Branch"></label>
-        <input class="form-control" asp-for="Branch" />
-        <span class="text-danger" asp-validation-for="Branch"></span>
+        <label asp-for="BranchId"></label>
+        <select class="form-control" asp-for="BranchId" asp-items="@Model.Branches"></select>
+        <span class="text-danger" asp-validation-for="BranchId"></span>
     </div>
     <div style="display: none;">
         <label asp-for="DateOfEmployment"></label>
@@ -59,6 +59,9 @@
     <div>
         <div>
             <button class="btn btn-primary" type="submit">Zapisz pracownika</button>
+        </div>
+        <div>
+            <a class="btn btn-primary" asp-controller="Employee" asp-action="Fire" asp-route-id="@Model.Id">Zwolnij pracownika</a>
         </div>
         <div>
             <button class="btn btn-secondary" asp-controller="Employee" asp-action="Index">Anuluj</button>

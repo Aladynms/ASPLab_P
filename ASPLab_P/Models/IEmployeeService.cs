@@ -1,4 +1,6 @@
-﻿namespace ASPLab_P.Models
+﻿using Data.Entities;
+
+namespace ASPLab_P.Models
 {
     public interface IEmployeeService
     {
@@ -7,5 +9,7 @@
         void Edit(Employee employee);
         List<Employee> FindAll();
         Employee? FindById(int id);
+
+        List<BranchEntity> FindAllBranches();
     }
 }

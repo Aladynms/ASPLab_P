@@ -16,7 +16,7 @@ namespace ASPLab_P.Mappers
                 Email = entity.Email,
                 Phone = entity.Phone,
                 Position = (Position)entity.Position,
-                Branch = entity.Branch,
+                BranchId = entity.BranchId,
                 DateOfEmployment = entity.DateOfEmployment,
                 DateOfDismissal = entity.DateOfDismissal,
             };
@@ -33,7 +33,7 @@ namespace ASPLab_P.Mappers
                 Email = model.Email,
                 Phone = model.Phone,
                 Position = (int)model.Position,
-                Branch = model.Branch,
+                BranchId = model.BranchId,
                 DateOfEmployment = model.DateOfEmployment,
                 DateOfDismissal = model.DateOfDismissal,
             };

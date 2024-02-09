@@ -1,5 +1,6 @@
 ﻿using ASPLab_P.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ASPLab_P.Controllers
 {
@@ -12,16 +13,31 @@ namespace ASPLab_P.Controllers
             _employeeService = employeeService;
         }
 
+
+        private void InitializeBranches(Employee model)
+        {
+            model.Branches = _employeeService
+                .FindAllBranches()
+                .Select(o => new SelectListItem() { Value = o.BranchId.ToString(), Text = o.Title })
+                .ToList();
+        }
+
+
         public IActionResult Index()
         {
-            return View(_employeeService.FindAll());
+            var employees = _employeeService.FindAll();
+            var branches = _employeeService.FindAllBranches();
+            ViewBag.Branches = branches.ToDictionary(b => b.BranchId, b => b.Title);
+            return View(employees);
         }
 
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            Employee employee = new Employee();
+            InitializeBranches(employee);
+            return View(employee);
         }
 
         [HttpPost]
@@ -32,7 +48,8 @@ namespace ASPLab_P.Controllers
                 _employeeService.Add(employee);
                 return RedirectToAction("Index");
             }
-            return View();
+            InitializeBranches(employee);
+            return View(employee);
         }
 
 
@@ -58,13 +75,30 @@ namespace ASPLab_P.Controllers
                 _employeeService.Edit(employee);
                 return RedirectToAction("Index");
             }
-            return View();
+            InitializeBranches(employee);
+            return View(employee);
         }
 
 
         public IActionResult Detalis(int id)
         {
             return View(_employeeService.FindById(id));
+        }
+
+
+        [HttpGet]
+        public IActionResult Fire(int id)
+        {
+
+            return View(_employeeService.FindById(id));
+        }
+
+        [HttpPost]
+        public IActionResult Fire(Employee employee)
+        {
+            employee.DateOfDismissal = DateTime.Now;
+            _employeeService.Edit(employee);
+            return RedirectToAction("Index");
         }
 
 

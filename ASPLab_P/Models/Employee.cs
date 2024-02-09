@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace ASPLab_P.Models
@@ -38,10 +40,12 @@ namespace ASPLab_P.Models
         [Display(Name = "Stanowisko")]
         public Position Position { get; set; }
 
-        [Required(ErrorMessage = "Pole 'Oddział' nie może być puste")]
-        [StringLength(maximumLength: 30, ErrorMessage = "Przekroczono max ilość znaków (max 30 znaków)")]
+        [HiddenInput]
         [Display(Name = "Oddział")]
-        public string Branch { get; set; }
+        public int BranchId { get; set; }
+
+        [ValidateNever]
+        public List<SelectListItem> Branches { get; set; }
 
         [Required(ErrorMessage = "Pole 'Data zatrudnienia' nie może być puste")]
         [DataType(DataType.Date, ErrorMessage = "Podano nieprawidłową Datę zatrudnienia")]

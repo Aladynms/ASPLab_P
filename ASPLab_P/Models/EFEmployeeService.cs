@@ -1,6 +1,7 @@
 ﻿using ASPLab_P.Mappers;
 using Data;
 using Data.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ASPLab_P.Models
 {
@@ -13,8 +14,19 @@ namespace ASPLab_P.Models
             _context = employeeService;
         }
 
+
+        private Employee InitializeBranches(Employee model)
+        {
+            model.Branches = FindAllBranches()
+                .Select(o => new SelectListItem() { Value = o.BranchId.ToString(), Text = o.Title })
+                .ToList();
+            return model;
+        }
+
+
         public void Add(Employee employee)
         {
+            employee.DateOfEmployment = DateTime.Now;
             _context.Employees.Add(EmployeeMapper.ToEntity(employee));
             _context.SaveChanges();
         }
@@ -32,7 +44,7 @@ namespace ASPLab_P.Models
             var entity = _context.Employees.Find(id);
             if (entity is not null)
             {
-                return EmployeeMapper.FromEntity(entity);
+                return InitializeBranches(EmployeeMapper.FromEntity(entity));
             }
             return null;
         }
@@ -51,6 +63,12 @@ namespace ASPLab_P.Models
         {
             _context.Employees.Update(EmployeeMapper.ToEntity(employee));
             _context.SaveChanges();
+        }
+
+
+        public List<BranchEntity> FindAllBranches()
+        {
+            return _context.Branches.ToList();
         }
     }
 }

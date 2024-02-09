@@ -37,9 +37,9 @@
         <span class="text-danger" asp-validation-for="Position"></span>
     </div>
     <div>
-        <label asp-for="Branch"></label>
-        <input class="form-control" asp-for="Branch" />
-        <span class="text-danger" asp-validation-for="Branch"></span>
+        <label asp-for="BranchId"></label>
+        <select class="form-control" asp-for="BranchId" asp-items="@Model.Branches"></select>
+        <span class="text-danger" asp-validation-for="BranchId"></span>
     </div>
 
     <div>

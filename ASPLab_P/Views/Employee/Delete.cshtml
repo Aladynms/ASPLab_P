@@ -14,6 +14,15 @@
 
     <p>PESEL</p>
     <h3>@Model.PESEL</h3>
+
+    <p>Pozycja</p>
+    <h3>@Model.Position.GetDisplayName()</h3>
+
+    @{
+        var branchTitle = Model.Branches.FirstOrDefault(b => b.Value == Model.BranchId.ToString())?.Text;
+    }
+    <p>Oddział</p>
+    <h3>@branchTitle</h3>
 </div>
 <div>
     <h1>Czy na pewno usunąć powyższego pracownika?</h1>

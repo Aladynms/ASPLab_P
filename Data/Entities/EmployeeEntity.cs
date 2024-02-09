@@ -36,7 +36,10 @@ namespace Data.Entities
         public int Position { get; set; }
 
         [Required]
-        public string Branch { get; set; }
+        public int BranchId { get; set; }
+
+        
+        public BranchEntity? Branch { get; set; }
 
         [Required]
         public DateTime DateOfEmployment { get; set; }

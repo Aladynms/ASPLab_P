@@ -4,6 +4,7 @@
 *@
 @{
     string DateOfDismissal = Model.DateOfDismissal == null ? "Brak - Pracownik aktywny" : Model.DateOfDismissal.Value.Date.ToString("dd/MM/yyyy");
+    string branchTitle = Model.Branches.FirstOrDefault(b => b.Value == Model.BranchId.ToString())?.Text;
 }
 <h1>Informacje o pracowniku</h1>
 
@@ -26,7 +27,7 @@
 <h3>@Model.Position.GetDisplayName()</h3>
 
 <p>Oddział</p>
-<h3>@Model.Branch</h3>
+<h3>@branchTitle</h3>
 
 <p>Data zatrudnienia</p>
 <h3>@Model.DateOfEmployment.Date.ToString("dd/MM/yyyy")</h3>
