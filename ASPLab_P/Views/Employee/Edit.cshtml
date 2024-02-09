@@ -75,7 +75,7 @@
             let select = document.getElementById("BranchId");
             let filter = document.getElementById("filter");
 
-            fetch(`/api/branches?filter=${filter.value}`)
+            fetch(`/api/branches?title=${filter.value}`)
                 .then(response => {
                     if (response.ok) {
                         return response.json()
@@ -97,7 +97,7 @@
         }
 
         let filter = document.getElementById("filter");
-        filter.onchange = function (e) {
+        filter.onkeyup = function (e) {
             populateBranches();
         };
     </script>

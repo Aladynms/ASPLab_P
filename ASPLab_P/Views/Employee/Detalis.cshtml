@@ -5,6 +5,7 @@
 @{
     string DateOfDismissal = Model.DateOfDismissal == null ? "Brak - Pracownik aktywny" : Model.DateOfDismissal.Value.Date.ToString("dd/MM/yyyy");
     string branchTitle = Model.Branches.FirstOrDefault(b => b.Value == Model.BranchId.ToString())?.Text;
+    string branchId = Model.Branches.FirstOrDefault(b => b.Value == Model.BranchId.ToString())?.Value;
 }
 <h1>Informacje o pracowniku</h1>
 
@@ -28,6 +29,7 @@
 
 <p>Oddział</p>
 <h3>@branchTitle</h3>
+<a class="btn btn-secondary" asp-controller="Branch" asp-action="Detalis" asp-route-id="@branchId">Szczegóły oddziału</a>
 
 <p>Data zatrudnienia</p>
 <h3>@Model.DateOfEmployment.Date.ToString("dd/MM/yyyy")</h3>

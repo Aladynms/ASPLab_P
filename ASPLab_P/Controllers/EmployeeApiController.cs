@@ -20,7 +20,7 @@ namespace ASPLab_P.Controllers
             if (string.IsNullOrWhiteSpace(BranchId))
             {
                 return Ok(_context.Employees
-                    .Select(o => new { o.Name, o.LastName, o.PESEL, o.Email, o.Phone, o.Position, o.BranchId, o.DateOfEmployment, o.DateOfDismissal })
+                    .Select(o => new { o.EmployeeId, o.Name, o.LastName, o.PESEL, o.Email, o.Phone, o.Position, o.BranchId, o.DateOfEmployment, o.DateOfDismissal })
                     .ToList());
             }
 
@@ -28,7 +28,7 @@ namespace ASPLab_P.Controllers
 
             return Ok(_context.Employees
                 .Where(o => o.BranchId == int.Parse(BranchId))
-                .Select(o => new { o.Name, o.LastName, o.PESEL, o.Email, o.Phone, o.Position, o.BranchId, o.DateOfEmployment, o.DateOfDismissal })
+                .Select(o => new { o.EmployeeId, o.Name, o.LastName, o.PESEL, o.Email, o.Phone, o.Position, o.BranchId, o.DateOfEmployment, o.DateOfDismissal })
                 .ToList());
         }
     }

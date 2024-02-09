@@ -2,7 +2,14 @@
 @{
     ViewData["Title"] = "Oddziały";
 }
-
+<script>
+    async function countEmployeesInBranch(branchId) {
+        const response = await fetch(`/api/employees?branchId=${branchId}`);
+        const data = await response.json();
+        const count = data.length;
+        document.getElementById(branchId).innerHTML = `${count}`;
+    }
+</script>
 <a class="btn btn-primary" asp-controller="Branch" asp-action="Create">Dodaj oddział</a>
 <h1>Oddziały</h1>
 <div class="row mb-3">
@@ -32,6 +39,9 @@
                 Państwo
             </th>
             <th>
+                Pracownicy
+            </th>
+            <th>
                 Akcje
             </th>
         </tr>
@@ -48,6 +58,9 @@
                 </td>
                 <td>
                     @item.Country
+                </td>
+                <td id="@item.BranchId">
+                    <script>countEmployeesInBranch(@item.BranchId)</script>
                 </td>
                 <td>
                     <a asp-controller="Branch" asp-action="Edit" asp-route-id="@item.BranchId">Edytuj</a>

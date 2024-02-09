@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ASPLab_P.Models
 {
     public class Branch
     {
+        [HiddenInput]
         public int BranchId { get; set; }
 
         [Required(ErrorMessage = "Pole 'Tytuł' nie może być puste")]

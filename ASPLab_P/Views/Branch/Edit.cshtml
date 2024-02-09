@@ -46,6 +46,9 @@
         <button class="btn btn-primary" type="submit">Zapisz zmiany</button>
     </div>
     <div>
+        <a class="btn btn-primary" asp-controller="Branch" asp-action="Delete" asp-route-id="@Model.BranchId">Usuń oddział</a>
+    </div>
+    <div>
         <a class="btn btn-secondary" asp-controller="Branch" asp-action="Index">Anuluj</a>
     </div>
 </form>

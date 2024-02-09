@@ -65,6 +65,7 @@ app.Run();
 
 // Commandline
 // dotnet tool install --global --version 6.0.25 dotnet-ef
+// mo¿liwe wymaganie uruchomienie programu ponownie
 // dotnet ef database drop
 // dotnet ef migrations remove
 // dotnet ef migrations add create
