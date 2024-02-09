@@ -1,0 +1,40 @@
+﻿@model Branch
+@{
+    ViewData["Title"] = "Informacje o oddziale";
+}
+
+<h1>Informacje o oddziale</h1>
+
+<p>Nazwa oddziału:</p>
+<h3>@Model.Title</h3>
+
+<p>Liczba pracowników:</p>
+<h3 id="empl"></h3>
+
+<p>Adres:</p>
+<ul>
+    <li>Miasto: @Model.City</li>
+    <li>Ulica: @Model.Street</li>
+    <li>Numer: @Model.Number</li>
+    <li>Kod pocztowy: @Model.PostalCode</li>
+    <li>Region: @Model.Region</li>
+    <li>Państwo: @Model.Country</li>
+</ul>
+
+<a class="btn btn-secondary" asp-controller="Branch" asp-action="Edit" asp-route-id="@Model.BranchId">Edycja</a>
+<a class="btn btn-secondary" asp-controller="Branch" asp-action="Index">Powrót</a>
+
+@section Scripts {
+    <script>
+        async function countEmployeesInBranch(branchId) {
+            const response = await fetch(`/api/employees?branchId=${branchId}`);
+            const data = await response.json();
+            const count = data.length;
+            document.getElementById("empl").innerHTML = `${count}`;;
+        }
+
+        window.onload = function () {
+            countEmployeesInBranch(@Model.BranchId);
+        };
+    </script>
+}

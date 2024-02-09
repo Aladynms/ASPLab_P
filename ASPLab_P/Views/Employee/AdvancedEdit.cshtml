@@ -39,8 +39,8 @@
     </div>
     <div>
         <label asp-for="BranchId"></label>
+        <input class="form-control" type="text" name="filter" id="filter" placeholder="Wyszukaj oddział" />
         <select class="form-control" asp-for="BranchId" asp-items="@Model.Branches"></select>
-        <span class="text-danger" asp-validation-for="BranchId"></span>
     </div>
     <div>
         <label asp-for="DateOfEmployment"></label>
@@ -68,3 +68,37 @@
         </div>
     </div>
 </form>
+
+@section Scripts {
+    <script>
+        function populateBranches() {
+            let select = document.getElementById("BranchId");
+            let filter = document.getElementById("filter");
+
+            fetch(`/api/branches?filter=${filter.value}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    throw "No OK, actual status " + response.status;
+                })
+                .then(json => {
+                    select.innerHTML = '';
+                    for (let item of json) {
+                        let option = document.createElement('option');
+                        option.setAttribute('value', item.branchId);
+                        option.innerText = item.title;
+                        select.appendChild(option);
+                    }
+                })
+                .catch(e => {
+                    console.log('Cant get data from api', e);
+                });
+        }
+
+        let filter = document.getElementById("filter");
+        filter.onchange = function (e) {
+            populateBranches();
+        };
+    </script>
+}

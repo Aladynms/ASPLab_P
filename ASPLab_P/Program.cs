@@ -15,6 +15,7 @@ builder.Services.AddControllersWithViews();
 //
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddTransient<IEmployeeService, EFEmployeeService>();
+builder.Services.AddTransient<IBranchService, EFBranchService>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddDefaultIdentity<IdentityUser>(
